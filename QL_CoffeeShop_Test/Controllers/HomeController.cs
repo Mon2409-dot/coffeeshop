@@ -11,7 +11,7 @@ namespace QL_CoffeeShop_Test.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult cShop()
         {
             return View();
         }
