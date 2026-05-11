@@ -5,28 +5,23 @@ namespace QL_CoffeeShop_Test.Models.Service
 {
     public class ProductRepository : IProductRepository
     {
-        private List<Product> ProductsList = new List<Product>()
+        private CoffeeshopDbContext dbContext;
+        public ProductRepository(CoffeeshopDbContext dbContext)
         {
-            new Product{Id = 1, Name = "America", Price = 25, detail = "Name product", ImageUrl ="http://index.com" },
-            new Product{Id = 2, Name = "Latte", Price = 30, detail = "Name product", ImageUrl ="http://index.com" },
-            new Product{Id = 3, Name = "Cappuccino", Price = 35, detail = "Name product", ImageUrl ="http://index.com" },
-        };
+            this.dbContext = dbContext;
+        }
         public IEnumerable<Product> GetAllProducts()
         {
-            return ProductsList;
+            return dbContext.Products;
         }
-
-
-        public Product GetProductDetail(int id)
+        public Product? GetProductDetail(int id)
         {
             return dbContext.Products.FirstOrDefault(p => p.Id == id);
         }
-
-        
-
         public IEnumerable<Product> GetTrendingProducts()
         {
-            return ProductsList.Where(p => p.IsTrendingProduct);
+            return dbContext.Products.Where(p => p.IsTrendingProduct);
         }
+
     }
 }
