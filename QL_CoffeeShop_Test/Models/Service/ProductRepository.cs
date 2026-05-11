@@ -17,7 +17,7 @@ namespace QL_CoffeeShop_Test.Models.Service
 
         public Product GetProductDetail(int id)
         {
-            return ProductsList.FirstOrDefault(p => p.Id == id);
+            return dbContext.Products.FirstOrDefault(p => p.Id == id);
         }
 
         
