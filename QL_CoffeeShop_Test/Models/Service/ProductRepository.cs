@@ -1,4 +1,6 @@
-﻿using QL_CoffeeShop_Test.Models.interfaces;
+﻿using QL_CoffeeShop_Test.Data;
+using QL_CoffeeShop_Test.Models.interfaces;
+
 namespace QL_CoffeeShop_Test.Models.Service
 {
     public class ProductRepository : IProductRepository

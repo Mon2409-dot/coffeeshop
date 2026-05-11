@@ -1,6 +1,8 @@
-using QL_CoffeeShop_Test.Models.Service;
+using Microsoft.EntityFrameworkCore;
+using QL_CoffeeShop_Test.Data;
 using QL_CoffeeShop_Test.Models.interfaces;
-var builder = WebApplication.CreateBuilder(args);
+using QL_CoffeeShop_Test.Models.Service;
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -15,6 +17,8 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+builder.Services.AddDbContext<CoffeeshopDbContext>(option =>
+option.UseSqlServer(builder.Configuration.GetConnectionString("CoffeeShopDbContextConnection")));
 app.UseHttpsRedirection();
 app.UseRouting();
 
