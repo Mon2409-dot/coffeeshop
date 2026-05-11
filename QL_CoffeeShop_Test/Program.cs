@@ -1,6 +1,11 @@
 
 using Microsoft.EntityFrameworkCore;
 using QL_CoffeeShop_Test.Data;
+using QL_CoffeeShop_Test.Models.interfaces;
+using QL_CoffeeShop_Test.Models.Service;
+
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +13,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<CoffeeshopDbContext>(option =>
 option.UseSqlServer(builder.Configuration.GetConnectionString("CoffeeShopDbContextConnection")));
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddControllersWithViews();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
