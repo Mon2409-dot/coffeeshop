@@ -9,7 +9,7 @@ namespace QL_CoffeeShop_Test.Controllers
         {
             this.productRepository = productRepository;
         }
-        public IActionResult shop()
+        public IActionResult Shop()
         {
             return View(productRepository.GetAllProducts());
         }

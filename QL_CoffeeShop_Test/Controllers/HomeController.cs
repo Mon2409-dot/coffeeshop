@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using QL_CoffeeShop_Test.Models;
 using QL_CoffeeShop_Test.Models.interfaces;
+using QL_CoffeeShop_Test.Models.Service;
 using System.Diagnostics;
 
 namespace QL_CoffeeShop_Test.Controllers
@@ -16,7 +17,8 @@ namespace QL_CoffeeShop_Test.Controllers
 
         public IActionResult Index()
         {
-            return View(productRepository.GetTrendingProducts());
+            var trendingProducts = productRepository.GetTrendingProducts(); 
+            return View(trendingProducts);
         }
     }
 }

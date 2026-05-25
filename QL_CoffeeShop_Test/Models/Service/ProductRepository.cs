@@ -1,4 +1,5 @@
-﻿using QL_CoffeeShop_Test.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using QL_CoffeeShop_Test.Data;
 using QL_CoffeeShop_Test.Models.interfaces;
 
 namespace QL_CoffeeShop_Test.Models.Service
@@ -20,7 +21,9 @@ namespace QL_CoffeeShop_Test.Models.Service
         }
         public IEnumerable<Product> GetTrendingProducts()
         {
-            return dbContext.Products.Where(p => p.IsTrendingProduct);
+            return dbContext.Products  
+                           .Where(p => p.IsTrendingProduct == true)
+                           .ToList();
         }
 
     }
