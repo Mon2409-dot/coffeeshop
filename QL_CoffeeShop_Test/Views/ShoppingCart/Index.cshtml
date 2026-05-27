@@ -1,0 +1,93 @@
+﻿@model QL_CoffeeShop_Test.Models.Service.ShoppingCartRepository
+
+@{
+    ViewData["Title"] = "Shopping Cart";
+}
+
+<section class="h-100 h-custom" style="background-color: #eee; padding-top: 50px; padding-bottom: 50px;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12">
+                <div class="card card-registration card-registration-2" style="border-radius: 15px; background-color:#fafafa">
+                    <div class="card-body p-0">
+                        <div class="row g-0">
+                            
+                            
+                            <div class="col-lg-7">
+                                <div class="p-5">
+                                    <div class="d-flex justify-content-between align-items-center mb-5">
+                                        <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
+                                        <h6 class="mb-0 text-muted">@Model.GetAllShoppingCartItems().Count items</h6>
+                                    </div>
+                                    <hr class="my-4">
+
+                                    @foreach (var item in Model.GetAllShoppingCartItems())
+                                    {
+                                        <div class="row mb-4 d-flex justify-content-between align-items-center">
+                                           
+                                            <div class="col-md-2 col-lg-2 col-xl-2">
+                                                <img src="@item.Product.ImageUrl" class="img-fluid rounded-3" alt="@item.Product.Name">
+                                            </div>
+                                            
+                                            
+                                            <div class="col-md-3 col-lg-3 col-xl-3">
+                                                <h6 class="text-muted">Coffee</h6>
+                                                <h6 class="text-black mb-0">@item.Product.Name</h6>
+                                            </div>
+                                            
+                                            
+                                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                                <h6 class="text-black mb-0">@item.Qty x</h6>
+                                            </div>
+                                            
+                                        
+                                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                                <h6 class="mb-0">@item.Product.Price.ToString("C", new System.Globalization.CultureInfo("en-US"))</h6>
+                                            </div>
+                                            
+                                        
+                                            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                                <a asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart" asp-route-productId="@item.Product.Id" class="text-muted">
+                                                    <h3 style="margin: 0;">&#128465;</h3>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <hr class="my-4">
+                                    }
+
+                                    
+                                    <div class="pt-5">
+                                        <h6 class="mb-0">
+                                            <a href="/Products/Shop" class="text-body">
+                                                <i class="fas fa-long-arrow-alt-left me-2"></i>Back to shop
+                                            </a>
+                                        </h6>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                            <div class="col-lg-5 bg-grey" style="background-color: #eaeaea; border-top-right-radius: 15px; border-bottom-right-radius: 15px;">
+                                <div class="p-5">
+                                    <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                                    <hr class="my-4">
+
+                                    <div class="d-flex justify-content-between mb-5">
+                                        <h5 class="text-uppercase">Total price</h5>
+                                        <h5>@Model.GetShoppingCartTotal().ToString("C", new System.Globalization.CultureInfo("en-US"))</h5>
+                                    </div>
+
+                                   
+                                    <button type="button" class="btn btn-dark btn-block btn-lg w-100 text-center" data-mdb-ripple-color="dark" style="border-radius: 6px;">
+                                        Proceed
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

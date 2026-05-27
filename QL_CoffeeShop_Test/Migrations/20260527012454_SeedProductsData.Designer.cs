@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QL_CoffeeShop_Test.Data;
 
@@ -10,9 +11,11 @@ using QL_CoffeeShop_Test.Data;
 namespace QL_CoffeeShop_Test.Migrations
 {
     [DbContext(typeof(CoffeeshopDbContext))]
-    partial class CoffeeshopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260527012454_SeedProductsData")]
+    partial class SeedProductsData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -103,39 +106,6 @@ namespace QL_CoffeeShop_Test.Migrations
                             Price = 35m,
                             detail = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
                         });
-                });
-
-            modelBuilder.Entity("QL_CoffeeShop_Test.Models.ShoppingCartItem", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Qty")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ShoppingCardID")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ShoppingCartItems");
-                });
-
-            modelBuilder.Entity("QL_CoffeeShop_Test.Models.ShoppingCartItem", b =>
-                {
-                    b.HasOne("QL_CoffeeShop_Test.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId");
-
-                    b.Navigation("Product");
                 });
 #pragma warning restore 612, 618
         }

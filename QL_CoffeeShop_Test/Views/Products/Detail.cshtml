@@ -4,27 +4,26 @@
     Layout = "_Layout";
 }
 
-<br />
-<div class="container">
+<div class="container my-5 py-5" style="min-height: 70vh;">
     <div class="card-wrapper">
-        <div class="row align-items-center">
-            <div class="col-12 col-lg-6">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-12 col-lg-6 mb-4 mb-lg-0">
                 <div class="image-wrapper">
                     <img src="@Model.ImageUrl" alt="@Model.Name"
-                         style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 8px;">
+                         style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 8px;" class="shadow-sm">
                 </div>
             </div>
             <div class="col-12 col-lg-6">
                 <div class="text-box" style="padding: 20px;">
-                    <h5 class="mbr-title mbr-fonts-style display-2">
+                    <h1 class="mbr-title mbr-fonts-style display-2">
                         <strong>@Model.Name</strong>
-                    </h5>
-                    <p class="mbr-text mbr-fonts-style display-7">
+                    </h1>
+                    <p class="mbr-text mbr-fonts-style mt-3 display-7 text-muted" style="line-height: 1.6;">
                         @Model.detail
                     </p>
-                    <div class="cost">
-                        <span class="currentcost mbr-fonts-style pr-2 display-2">
-                            @Model.Price $
+                    <div class="cost my-4">
+                        <span class="currentcost mbr-fonts-style pr-2 display-2" style="color: #232323; font-weight: 300;">
+                            @Model.Price.ToString("C", new System.Globalization.CultureInfo("en-US"))
                         </span>
                     </div>
                     <div class="mbr-section-btn pt-3">
@@ -38,4 +37,3 @@
         </div>
     </div>
 </div>
-<br />

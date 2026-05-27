@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QL_CoffeeShop_Test.Data;
 
@@ -10,9 +11,11 @@ using QL_CoffeeShop_Test.Data;
 namespace QL_CoffeeShop_Test.Migrations
 {
     [DbContext(typeof(CoffeeshopDbContext))]
-    partial class CoffeeshopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260527012943_addShoppingCartItem")]
+    partial class addShoppingCartItem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
