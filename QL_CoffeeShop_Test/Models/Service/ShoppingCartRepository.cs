@@ -32,7 +32,7 @@ namespace QL_CoffeeShop_Test.Models.Service
             return new ShoppingCartRepository(context) { ShoppingCartId = cartId };
         }
 
-        public void AddToCart(Product product)
+        public void AddToShoppingCart(Product product)
         {
             var shoppingCartItem = dbContext.ShoppingCartItems.FirstOrDefault(s => s.Product.Id == product.Id && s.ShoppingCardID == ShoppingCartId);
             if (shoppingCartItem == null)

@@ -5,7 +5,7 @@ namespace QL_CoffeeShop_Test.Models.interfaces
 {
     public interface IShoppingCartRepository
     {
-        void AddToCart(Product product);
+        void AddToShoppingCart(Product product);
 
         int RemoveFromCart(Product product);
 
